@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { KafkaService } from 'src/messaging/kafka.service';
 
 import { PrismaService } from '../database/prisma/prisma.service';
+import { KafkaService } from '../messaging/kafka.service';
 
 interface CreatePurchaseParams {
   customerId: string;
