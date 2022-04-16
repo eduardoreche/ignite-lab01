@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import slugify from 'slugify';
 
-import { PrismaService } from 'src/database/prisma/prisma.service';
+import { PrismaService } from '../database/prisma/prisma.service';
 
 interface CreateProductParams {
   title: string;
@@ -13,6 +13,12 @@ export class ProductsService {
 
   async listAllProducts() {
     return await this.prisma.product.findMany();
+  }
+
+  async findProductById(id: string) {
+    return await this.prisma.product.findUnique({
+      where: { id },
+    });
   }
 
   async createProduct({ title }: CreateProductParams) {
